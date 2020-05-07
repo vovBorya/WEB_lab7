@@ -1,6 +1,7 @@
-//modal - для манипуляции над модальным окном
+//для манипуляции над модальным окном
 const modal = document.getElementById("modal");
 
+//для переключения фона
 const colorArray = ["rgb(34, 49, 63)", "rgb(44, 62, 80)", "rgb(58, 83, 155)"];
 
 function togglePicture() {
