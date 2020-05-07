@@ -36,8 +36,17 @@ window.onclick = function (event) {
 }
 
 function changeBackground() {
-  const background = document.getElementById("container");
-  console.log(background.style.background);
-  background.style.background = "rgb(44, 62, 80)";
-  console.log(background.style.background);
+  const mainDiv = document.getElementById("container");
+  const oldBackground = window.getComputedStyle(document.querySelector('#container')).backgroundColor;
+  switch (oldBackground) {
+    case colorArray[0]:
+      mainDiv.style.background = colorArray[1];
+      break;
+    case colorArray[1]:
+      mainDiv.style.background = colorArray[2];
+      break;
+    case colorArray[2]:
+      mainDiv.style.background = colorArray[0];
+      break;
+  }
 }
