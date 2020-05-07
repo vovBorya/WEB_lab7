@@ -1,5 +1,14 @@
+.jumbotron {
+    margin: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(34, 49, 63);
+}
+
+
 .toggle-img-div {
-    margin: 100px;
+    margin: 1rem;
     padding: 2rem;
     display: flex;
     align-items: center;
@@ -7,10 +16,49 @@
 }
 
 .toggle-img-div img{
+    margin: 1rem;
     height: 300px;
     width: 300px;
 }
 
 .toggle-img-div button {
-    margin-top: 2rem;
+    margin-top: 1rem;
+    transition: .5s;
 }
+
+.toggle-img-div button:hover {
+    background-color: aquamarine;
+    transition: .5s;
+}
+
+.form-control {
+    width: 90%;
+    margin: 0 1rem 0 1rem;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+}
+
+.btn-div {
+    float: right;
+    margin-right: 1rem;
+}
+
+.welc

@@ -8,10 +8,29 @@
   <title>Title</title>
 </head>
 <body>
-  <div class="toggle-img-div list-group">
-    <img id="os-logo" src="resource/linux-logo.png">
-    <p id="label">Linux</p>
-    <button class="btn btn-secondary" type="button" onclick="togglePicture()"  >Toggle picture</button>
+  <div class="jumbotron" id="container">
+    <div class="modal" id="modal">
+      <div class="modal-content">
+        <h4 class="modal-title" id="modalLabel">Enter your name</h4>
+        <input id="input" type="text" class="form-control">
+        <div class="modal-footer">
+          <button class="btn btn-warning" id="cancel-button" onclick="closeDialogBox()">Cancel</button>
+          <button class="btn btn-success" id="ok-button" onclick="submitDialogBox()">Ok</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="toggle-img-div list-group">
+      <button type="button" class="btn btn-primary" onclick="showDialogBox()">
+        Click and input
+      </button>
+      <h2 id="welcome-text"></h2>
+      <h3 id="label">Linux</h3>
+      <img id="os-logo" src="resource/linux-logo.png" onclick="togglePicture()">
+      <h3>Click the button to change text and picture</h3>
+      <button class="btn btn-secondary" type="button" onclick="togglePicture()">Toggle picture</button>
+      <button type="button" class="btn btn-primary" onclick="changeBackground()">Change background</button>
+    </div>
   </div>
 </body>
 </html>
