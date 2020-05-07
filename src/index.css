@@ -1,0 +1,16 @@
+.toggle-img-div {
+    margin: 100px;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.toggle-img-div img{
+    height: 300px;
+    width: 300px;
+}
+
+.toggle-img-div button {
+    margin-top: 2rem;
+}
