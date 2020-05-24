@@ -1,53 +1,65 @@
-//для манипуляции над модальным окном
-const modal = document.getElementById("modal");
+$(() => {
 
-//для переключения фона
-const colorArray = ["rgb(34, 49, 63)", "rgb(44, 62, 80)", "rgb(58, 83, 155)"];
+  //для переключения фона
+  const colorArray = [
+    "rgb(34, 49, 63)",
+    "rgb(44, 62, 80)",
+    "rgb(58, 83, 155)"
+  ];
 
-function togglePicture() {
-  const label = document.getElementById("label");
-  const image = document.getElementById("os-logo");
-  if (label.textContent === 'Linux') {
-    image.src = "resource/windows-logo.png"
-    label.innerHTML = "Windows";
-  } else {
-    label.innerHTML = "Linux";
-    image.src = "resource/linux-logo.png"
+  const modalBox = $('#modal')
+  const showDialogBox = () => modalBox.fadeIn(400);
+  const closeDialogBox = () => {
+    $('#input').val('');
+    modalBox.fadeOut(400);
   }
-}
 
-function showDialogBox() {
-    modal.style.display = "block";
-}
+  $('.togglePicture').on('click',() => {
+      const label = $('#label')
+      const image = $('#os-logo')
 
-function closeDialogBox() {
-  modal.style.display = "none";
-}
+      const changeLabelAndPicture = (textValue) => {
+        const timer = 300;
+        image.fadeOut(timer, () => {
+            image.attr('src', `resource/${textValue.toLowerCase()}-logo.png`)
+          }).fadeIn(timer)
+        label.fadeOut(timer, () => {
+            label.text(textValue)
+          }).fadeIn(timer);
+      }
 
-function submitDialogBox() {
-  const inputText = document.getElementById("input").value;
-  document.getElementById("welcome-text").innerText = `Hello, ${inputText}! How are you?`;
-  closeDialogBox();
-}
+      console.log(`label text: ${label.text()}`)
+      if (label.text() === 'Linux') {
+        changeLabelAndPicture('Windows')
+      } else {
+        changeLabelAndPicture('Linux')
+      }
+    })
 
-window.onclick = function (event) {
-  if (event.target === modal) {
-    modal.style.display = "none";
-  }
-}
+  $('.changeBack').on('click',() => {
+    const mainDiv = $('#container')
+    const oldBackground = mainDiv.css('background-color')
+    switch (oldBackground) {
+      case colorArray[0]:
+        mainDiv.css({ 'background-color': colorArray[1]});
+        break;
+      case colorArray[1]:
+        mainDiv.css({ 'background-color': colorArray[2]});
+        break;
+      case colorArray[2]:
+        mainDiv.css({ 'background-color': colorArray[0]});
+        break;
+    }
+  })
 
-function changeBackground() {
-  const mainDiv = document.getElementById("container");
-  const oldBackground = window.getComputedStyle(document.querySelector('#container')).backgroundColor;
-  switch (oldBackground) {
-    case colorArray[0]:
-      mainDiv.style.background = colorArray[1];
-      break;
-    case colorArray[1]:
-      mainDiv.style.background = colorArray[2];
-      break;
-    case colorArray[2]:
-      mainDiv.style.background = colorArray[0];
-      break;
-  }
-}
+  $('#showModalButton').on('click', () => showDialogBox())
+
+  $('#cancel-button').on('click', () => closeDialogBox());
+
+  $('#ok-button').on('click',() => {
+    const input = $('#input')
+    $('#welcome-text')
+      .text(`Hello, ${input.val()}! How are you?`)
+    closeDialogBox()
+  })
+})
